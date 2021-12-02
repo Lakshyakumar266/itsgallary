@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}{% endblock title %}
+
+{% block body %}
+
+<div class="container pp-section">
+  <div class="row">
+    <div class="col-md-9 col-sm-12 px-0">
+      <h1 class="h3"> We are Photo Perfect, A Digital Photography Studio.</h1>
+    </div>
+  </div>
+</div>
+<div class="container px-0 py-4">
+  <div class="pp-category-filter">
+    <div class="row">
+      <div class="col-sm-12"><a class="btn btn-primary pp-filter-button" href="#" data-filter="all">All</a><a
+          class="btn btn-outline-primary pp-filter-button" href="#" data-filter="people">People</a><a
+          class="btn btn-outline-primary pp-filter-button" href="#" data-filter="nature">Nature</a><a
+          class="btn btn-outline-primary pp-filter-button" href="#" data-filter="work">Work</a><a
+          class="btn btn-outline-primary pp-filter-button" href="#" data-filter="food">Food</a></div>
+    </div>
+  </div>
+</div>
+<div class="container px-0">
+  <div class="pp-gallery">
+    <div class="card-columns">
+
+      {% for PostImage in PostImages %}
+      <div class="card" data-groups="[&quot;{{PostImage.catogery|lower}}&quot;]">
+        <a href="/imagedetail/{{PostImage.sno}}">
+          <figure class="pp-effect"><img class="img-fluid" src="{{PostImage.image}}" alt="Nature" />
+            <figcaption>
+              <div class="h4">{{PostImage.title}}</div>
+              <p id="PostTag{{PostImage.sno}}">{{PostImage.catogery}}</p>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
