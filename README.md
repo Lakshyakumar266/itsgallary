@@ -10,5 +10,5 @@
 - *.html            - Additional HTML pages (if any).
 - LICENSE-*.txt     - License file as per your downloaded variant.
 
-- front-end by - [templateflip.com](https://templateflip.com/)
-- back-end by - [@lakshyakumar](https://www.instagram.com/codingprogamer/)
+1. front-end by - [templateflip.com](https://templateflip.com/)
+2. back-end by - [@lakshyakumar](https://www.instagram.com/codingprogamer/)
