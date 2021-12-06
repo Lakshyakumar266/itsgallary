@@ -28,7 +28,8 @@
     <div class="col-md-7 col-sm-12">
       <div class="pp-contact-message">
         <div class="h4 mb-3">Drop a Message</div>
-        <form action="https://formspree.io/your@email.com" method="POST">
+        <form action="/contact/" method="POST">
+          {% csrf_token %}
           <div class="row">
             <div class="col-md-6 col-sm-12 mb-3">
               <input class="mr-3 form-control" type="text" name="first-name" placeholder="*First Name" />
@@ -44,7 +45,7 @@
           </div>
           <div class="row mb-3">
             <div class="col">
-              <input class="form-control" type="email" name="_replyto" placeholder="*E-mail" />
+              <input class="form-control" type="email" name="email" placeholder="*E-mail" />
             </div>
           </div>
           <div class="row mb-3">

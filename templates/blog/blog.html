@@ -1,89 +1,49 @@
 {% extends 'layout.html' %}
 
 {% block title %}{% endblock title %}
+{% load humanize %}
 
 {% block body %}
 <div class="pp-section pp-container-readable">
-  <article class="pp-post"><a href="blog-post.html"><img class="img-fluid" src="/static/images/blog-1.jpg"
-        alt="Blog Image" /></a>
+  {% for post in posts %}
+
+  <article class="pp-post"><a href="blog-post.html"><img class="img-fluid" src="/{{post.image}}" alt="Blog Image" /></a>
     <header class="pp-post-header">
-      <div class="pp-post-title"><a class="h4" href="blog-post.html">Healthy Meals for Busy Morning</a></div>
+      <div class="pp-post-title"><a class="h4" href="/blog/blogpost/{{post.slug}}">{{post.title}}</a></div>
       <div class="pp-post-meta">
         <ul>
-          <li><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>November 04, 2017</span></li>
-          <li><i class="fa fa-tags" aria-hidden="true"></i><span><a href="#"><span>Branding</span></a>, <a
-                href="#"><span>Design</span></a></span></li>
-          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="#">Comments</a></li>
+          <li>
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            <span>{{post.timeStamp|naturalday}}</span>
+          </li>
+          <span><i class="fa fa-tags" aria-hidden="true"></i></span>
+          <span id="PostTags{{post.sno}}" class="text-capitalize"></span>
+          <script>
+            var tags = '{{post.tags}}'
+            tags = tags.split(',')
+            if (tags.length >= 3) {
+              document.getElementById('PostTags{{post.sno}}').innerHTML += `<a href="/blog/blogpost/{{post.slug}}"><span>${tags[1]}</span></a>,`
+              document.getElementById('PostTags{{post.sno}}').innerHTML += `<a href="/blog/blogpost/{{post.slug}}"><span>${tags[2]}</span></a>`
+            }
+            else {
+              document.getElementById('PostTags{{post.sno}}').innerHTML += `<a href="/blog/blogpost/{{post.slug}}"><span>${tags[0]}</span></a>,`
+              document.getElementById('PostTags{{post.sno}}').innerHTML += `<a href="/blog/blogpost/{{post.slug}}"><span>${tags[1]}</span></a>`
+            }
+          </script>
+          </li>
+          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="/blog/blogpost/{{post.slug}}">Comments</a></li>
         </ul>
       </div>
     </header>
     <div class="pp-post-content">
-      <p>Whether you've just got a new camera and are looking to learn some new photography techniques or have been
-        shooting for a while and want to master some old ones, this essential photographer's resource is here to help.
+      <p>{{post.shortdesc}}
       </p>
     </div>
-    <div class="pp-post-read-more"><a href="blog-post.html">Read More</a></div>
+    <div class="pp-post-read-more"><a href="/blog/blogpost/{{post.slug}}">Read More</a></div>
   </article>
-  <article class="pp-post"><a href="blog-post.html"><img class="img-fluid" src="/static/images/blog-2.jpg"
-        alt="Blog Image" /></a>
-    <header class="pp-post-header">
-      <div class="pp-post-title"><a class="h4" href="blog-post.html">Stay Healthy While Traveling</a></div>
-      <div class="pp-post-meta">
-        <ul>
-          <li><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>November 04, 2017</span></li>
-          <li><i class="fa fa-tags" aria-hidden="true"></i><span><a href="#"><span>Branding</span></a>, <a
-                href="#"><span>Design</span></a></span></li>
-          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="#">Comments</a></li>
-        </ul>
-      </div>
-    </header>
-    <div class="pp-post-content">
-      <p>Whether you've just got a new camera and are looking to learn some new photography techniques or have been
-        shooting for a while and want to master some old ones, this essential photographer's resource is here to help.
-      </p>
-    </div>
-    <div class="pp-post-read-more"><a href="blog-post.html">Read More</a></div>
-  </article>
-  <article class="pp-post"><a href="blog-post.html"><img class="img-fluid" src="/static/images/blog-3.jpg"
-        alt="Blog Image" /></a>
-    <header class="pp-post-header">
-      <div class="pp-post-title"><a class="h4" href="blog-post.html">Medicinal Uses of flowers</a></div>
-      <div class="pp-post-meta">
-        <ul>
-          <li><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>November 04, 2017</span></li>
-          <li><i class="fa fa-tags" aria-hidden="true"></i><span><a href="#"><span>Branding</span></a>, <a
-                href="#"><span>Design</span></a></span></li>
-          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="#">Comments</a></li>
-        </ul>
-      </div>
-    </header>
-    <div class="pp-post-content">
-      <p>Whether you've just got a new camera and are looking to learn some new photography techniques or have been
-        shooting for a while and want to master some old ones, this essential photographer's resource is here to help.
-      </p>
-    </div>
-    <div class="pp-post-read-more"><a href="blog-post.html">Read More</a></div>
-  </article>
-  <article class="pp-post"><a href="blog-post.html"><img class="img-fluid" src="/static/images/blog-4.jpg"
-        alt="Blog Image" /></a>
-    <header class="pp-post-header">
-      <div class="pp-post-title"><a class="h4" href="blog-post.html">You can do anything if you believe</a></div>
-      <div class="pp-post-meta">
-        <ul>
-          <li><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>November 04, 2017</span></li>
-          <li><i class="fa fa-tags" aria-hidden="true"></i><span><a href="#"><span>Branding</span></a>, <a
-                href="#"><span>Design</span></a></span></li>
-          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="#">Comments</a></li>
-        </ul>
-      </div>
-    </header>
-    <div class="pp-post-content">
-      <p>Whether you've just got a new camera and are looking to learn some new photography techniques or have been
-        shooting for a while and want to master some old ones, this essential photographer's resource is here to help.
-      </p>
-    </div>
-    <div class="pp-post-read-more"><a href="blog-post.html">Read More</a></div>
-  </article>
+
+  {% endfor %}
+
   <div class="pp-pagination">
     <ul>
       <li><a href="#">← Previous</a></li>
